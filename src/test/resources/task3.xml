@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<record-table>
+    <record>
+        <record_id>12345</record_id>
+        <record_rows>
+            <record_row>str1234</record_row>
+        </record_rows>
+    </record>
+    <footer>
+        <record_count>12345</record_count>
+        <record_row_count>12345</record_row_count>
+    </footer>
+</record-table>
+
