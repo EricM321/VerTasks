@@ -8,13 +8,13 @@ public class BimBam {
     public void BimBam() {
 
         for (int i = START; i <= END; i++) {
-            if(i%3 == 0){
-                if(i%5 == 0){
+            if(i % 3 == 0){
+                if(i % 5 == 0){
                     System.out.println("BimBam");
                 } else{
                     System.out.println("Bim");
                 }
-            } else if(i%5 == 0){
+            } else if(i % 5 == 0){
                 System.out.println("Bam");
             } else{
                 System.out.println(i);
