@@ -8,23 +8,48 @@ import java.util.Random;
 public class GenerateXML {
 
     private static String randomString(int length){
-        return "adfasdg";
+        String asciiUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String asciiLowerCase = asciiUpperCase.toLowerCase();
+        String digits = "1234567890";
+        String seedChars = asciiUpperCase + asciiLowerCase + digits;
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        Random rand = new Random();
+
+        while(i < length){
+            sb.append(seedChars.charAt(rand.nextInt(seedChars.length())));
+            i++;
+        }
+        return sb.toString();
     }
 
-    private int occurrencesSubString(String subString, String fullText){
-        return 1;
+    private static int occurrencesSubString(String subString, StringBuilder fullText){
+        int stringLength = subString.length();
+        int textLength = fullText.length();
+        int count = 0;
+
+        for(int i = 0; i <= textLength - stringLength; i++){
+            int j;
+            for(j = 0; j < stringLength; j++) {
+                if (fullText.charAt(i + j) != subString.charAt(j)){
+                    break;
+                }
+            }
+
+            if(j == stringLength){
+                count++;
+                j = 0;
+            }
+        }
+
+        return count;
     }
 
-    public static void generate() {
+    public static void generate(int numRecords) {
         Random r = new Random();
         String fileStart = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><record-table>";
         String fileEnd = "</record-table>";
-        int numRecords = 2; //User input long data type
-        long recordID;
-        int numRecordRow = 3; //Will be random with max of 30
-        String recordRow = "dasgfasg"; //Will be random between 1 and 200 characters
-        long recordCount = 2;//Will be based on record elements in this file
-        long recordRowCount = 3; //Same as above but for record rows
+        int numRecordRow = r.nextInt(31 - 1) + 1;
 
         StringBuilder xmlContents = new StringBuilder();
 
@@ -41,11 +66,9 @@ public class GenerateXML {
             xmlContents.append("</record_rows>").append("</record>");
         }
 
-        xmlContents.append("<footer>").append("<record_count>").append(numRecords).append("</record_count>");
-        xmlContents.append("<record_row_count>").append(numRecords).append("</record_row_count>").append("</footer>");
+        xmlContents.append("<footer>").append("<record_count>").append(occurrencesSubString("<record>", xmlContents)).append("</record_count>");
+        xmlContents.append("<record_row_count>").append(occurrencesSubString("<record_row>", xmlContents)).append("</record_row_count>").append("</footer>");
         xmlContents.append(fileEnd);
-
-        System.out.println("StringBuilder size bytes: " + xmlContents.length());
 
         try (FileOutputStream fos = new FileOutputStream("task3Try.xml");
              OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);

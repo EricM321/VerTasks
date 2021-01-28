@@ -45,11 +45,11 @@ public class App {
                     HashMapTask();
                     System.out.println("\nThe CustomMapImpl test cover more.\n");
                 } else if(enteredValue == 3){
-                    GenerateXML.generate();
+                    GenerateXML.generate(1);
                     String path = System.getProperty("user.dir") + File.separator + "task3Try.xml";
                     File file = new File(path);
                     System.out.println("File size bytes: " + file.length());
-                    file.delete();
+                    //file.delete();
                     System.out.println("\n");
                 } else if(enteredValue == 0){
                     EXIT = true;
