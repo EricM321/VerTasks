@@ -1,6 +1,9 @@
 import task1.BimBam;
 import task2.CustomMapImpl;
+import task3.GenerateXML;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -42,6 +45,11 @@ public class App {
                     HashMapTask();
                     System.out.println("\nThe CustomMapImpl test cover more.\n");
                 } else if(enteredValue == 3){
+                    GenerateXML.generate();
+                    String path = System.getProperty("user.dir") + File.separator + "task3Try.xml";
+                    File file = new File(path);
+                    System.out.println("File size bytes: " + file.length());
+                    file.delete();
                     System.out.println("\n");
                 } else if(enteredValue == 0){
                     EXIT = true;
