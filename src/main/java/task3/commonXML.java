@@ -40,14 +40,14 @@ public class commonXML {
     }
 
     public static void saveXML(StringBuilder xmlContents, String filePath) throws IOException {
-        try (FileOutputStream fos = new FileOutputStream(filePath); //"task3Try.xml"
+        try (FileOutputStream fos = new FileOutputStream(filePath);
              OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
              BufferedWriter writer = new BufferedWriter(osw)) {
 
             writer.append(xmlContents);
         } catch (IOException e){
             System.out.println(Arrays.toString(e.getStackTrace()));
-            throw new IOException("Bad file path: ", e);
+            throw new IOException("Bad file path: " + filePath, e);
         }
     }
 }

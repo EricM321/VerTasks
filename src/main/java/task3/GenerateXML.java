@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class GenerateXML {
 
-    private static String randomString(int length){
+    public static String randomString(int length){
         String asciiUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String asciiLowerCase = asciiUpperCase.toLowerCase();
         String digits = "1234567890";

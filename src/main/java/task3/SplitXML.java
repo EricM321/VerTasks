@@ -27,7 +27,7 @@ public class SplitXML {
         System.out.println("Min max file size: " + (minMaxFileSize + fileStart.length()));
         System.out.println("Full file size: " + currentFullFile.length());
 
-        File theDir = new File(filePath+ File.separator + "generatedFiles");
+        File theDir = new File(filePath + File.separator + "generatedFiles");
         if (!theDir.exists()){
             theDir.mkdirs();
         }
