@@ -26,9 +26,6 @@
     <build>
         <plugins>
             <plugin>
-
-                <!-- Building an executable jar -->
-
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
