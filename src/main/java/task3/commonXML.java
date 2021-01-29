@@ -39,7 +39,7 @@ public class commonXML {
         return fileEnding;
     }
 
-    public static void saveXML(StringBuilder xmlContents, String filePath){
+    public static void saveXML(StringBuilder xmlContents, String filePath) throws IOException {
         try (FileOutputStream fos = new FileOutputStream(filePath); //"task3Try.xml"
              OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
              BufferedWriter writer = new BufferedWriter(osw)) {
@@ -47,6 +47,7 @@ public class commonXML {
             writer.append(xmlContents);
         } catch (IOException e){
             System.out.println(Arrays.toString(e.getStackTrace()));
+            throw new IOException("Bad file path: ", e);
         }
     }
 }

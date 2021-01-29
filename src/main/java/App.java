@@ -1,9 +1,7 @@
 import task1.BimBam;
 import task2.CustomMapImpl;
-import task3.GenerateXML;
 import task3.SplitXML;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -25,7 +23,6 @@ public class App {
     }
 
     public static void main(String[] args){
-
         boolean EXIT = false;
         Scanner input = new Scanner(System.in);
 
@@ -44,12 +41,38 @@ public class App {
                     System.out.println("\n");
                 } else if(enteredValue == 2){
                     HashMapTask();
-                    System.out.println("\nThe CustomMapImpl test cover more.\n");
+                    System.out.println("\nThe CustomMapImpl tests cover more.\n");
                 } else if(enteredValue == 3){
-                    SplitXML.splitting(2, 3000, System.getProperty("user.dir") ); //recommended 4000
+                    try {
+                        int numRecords = 1;
+                        boolean CORRECT = false;
+                        while(!CORRECT) {
+                            System.out.print("Enter max number of records to exist (between 1 and 30): ");
+                             numRecords = input.nextInt();
+                            if (numRecords < 1 || numRecords > 30) {
+                                System.out.println("Entry must be between 1 and 30");
+                            } else{
+                                CORRECT = true;
+                            }
+                        }
+
+                        System.out.print("Enter max size per file in bytes (recommended at least 3000): ");
+                        long maxFileSize = input.nextLong();
+                        input.nextLine(); //consume newline character
+
+                        System.out.println("Current directory path: " + System.getProperty("user.dir"));
+                        System.out.print("Enter path to save files to: ");
+                        String directoryPath = input.nextLine();
+
+                        SplitXML.splitting(numRecords, maxFileSize, directoryPath);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println("\n");
                 } else if(enteredValue == 0){
                     EXIT = true;
+                    input.close();
                 } else{
                     System.out.println("This " + "'" + enteredValue + "'" + " isn't an option");
                 }

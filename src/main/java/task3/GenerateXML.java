@@ -25,6 +25,7 @@ public class GenerateXML {
 
         StringBuilder xmlContents = new StringBuilder();
 
+        System.out.println("\nCreating records");
         for(int i = 0; i < numRecords; i++){
             xmlContents.append("<record>");
             xmlContents.append("<record_id>").append((long) i).append("</record_id>");
@@ -33,10 +34,11 @@ public class GenerateXML {
             int numRecordRow = r.nextInt(31 - 1) + 1;
 
             for(int j = 0; j < numRecordRow; j++){
-                xmlContents.append("<record_row>").append(randomString(r.nextInt(201 - 1) + 1)).append("</record_row>");
+                xmlContents.append("<record_row>").append(randomString(r.nextInt(200) + 1)).append("</record_row>");
             }
             xmlContents.append("</record_rows>").append("</record>");
         }
+        System.out.println("Record creation complete\n");
 
         return xmlContents;
 
